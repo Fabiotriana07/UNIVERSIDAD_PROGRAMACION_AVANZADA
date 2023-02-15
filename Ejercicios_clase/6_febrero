@@ -1,0 +1,69 @@
+/**********
+Fecha:6-feb-2023
+Autor:Fabio Triana
+Problema:
+ - Crear una estructura corta para pedir datos basicos del usuario.
+ - Crear una lista de palabrae a ser usadas aleatoriamente.
+ - Almacenar las palabras en un fichero.
+ -Leer y presentar en pantalla la lectura de un fichero.
+Solucion:
+- Se hara un TDA general para la captura de datos del usuario.
+- Se hara un TDA anidado, para la captura de datos de los hijos
+- para el caso concreto de esta solucion se presentara todos los anuncios posible descriptivos.
+*********/
+
+#include <iostream>
+#include <fstream>
+#include <ctime>
+
+using namespace std;
+// se crea una estructura para la captura de los datos basicos de los usuarios
+struct datos_usuarios{
+    string nombre;
+    string apellido;
+    int edad;
+};
+// se crea una lista, como conjunto de palabras disponibles para jugar
+const string lista_palabras[]={"hola", "mañana", "hoy", "tarde", "noche" };
+// se crea la funcion principal
+int main(){
+    // se declaran variables a usar
+    int i, j,cantidad;
+    datos_usuarios personas[cantidad];
+    
+    // se pide cuantos usuarios
+    cout << "¿Cuantos usuarios va a ingresar?:";
+    cin >> cantidad;
+    // se crea un ojeto struct del tamaño cantidad
+    datos_usuarios personas[cantidad];
+    // se piden los datos de los usuarios
+    //se escribe sobre un fichero; se usa "ofstream" para almacenar en el fichero
+    // se crea el objeto tipo ofstream (digital)junto con el nombre del fichero(fisico)
+    ofstream fichero_escritura ("usuarios_gym.txt");
+    // se debe preguntar si hay espacio en memoria para abrir el fichero_escritura
+    if (fichero_escritura.is_open()){
+        for (i=0;i<cantidad;i++){
+        cout<<"\nIngrese nombre";
+        cin >> personas[i].nombre;
+        cout<<"\nIngrese apellido";
+        cin >> personas[i].apellido;
+        cout<<"\nIngrese edad";
+        cin >> personas[i].edad;
+    }
+    }
+    else {
+        cout<<"o tiene permisos de escritura" << endl;
+    }
+    fichero_escritura.close();
+    // Se imprimen los datos de los usuarios
+     for (i=0;i<cantidad;i++){
+        cout<<"\nNombre["<<i+1<< "]:"<<personas[i].nombre endl;
+        cout<<"\nApellido["<<i+1<< "]:"<<personas[i].apellido endl;
+        cout<<"\nEdad["<<i+1<< "]:"<<personas[i].edad endl;
+        }
+   
+    cout<< "prueba de exito"<< endl;
+    return 0;
+    
+    
+}
