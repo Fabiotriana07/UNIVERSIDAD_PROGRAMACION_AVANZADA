@@ -1,0 +1,88 @@
+/**************************
+Fecha:1-feb-2023
+Autor:Fabio Triana
+Problema: un gimnasio se propone a a utomatizar el proceso de registro. Se necesita solicitar el numero de usuarios
+a registrar inicialmente. Se debe solicitar la mayor cantidad de datos posibles, para ser usados posteriormente.
+De ser necesario, se recomienda preguntar datos adicionales sobre sus hijos (nombre, edad,entre otros,adicional)
+Se necesita al final de la ejecucion, se presente el nombre de los usuarios registrados satisfactoriamente.
+
+Solucion: 
+- Se hara un TDA general para la captura de datos del usuario.
+- Se hara un TDA anidado, para la captura de datos de los hijos
+- para el caso concreto de esta solucion se presentara todos los anuncios posible descriptivos.
+***************************/
+
+#include <iostream>
+using namespace std;
+// se crea un TDA para la captura de los datos de cada usuario
+struct gym_usuario {
+    string nombre;
+    int edad;
+    long long cedula;
+    long long movil;
+    float masa_corporal;
+    char genero[20];
+
+// Se anida un TDA para la captura de datos de los hijos
+struct gym_hijo {
+    int cantidad;
+    int cedula;
+};
+gym_hijo hijo_usuario;
+};
+
+
+
+
+
+
+int main()
+{
+    // variables globales
+    int i,cantidad_usuarios;
+   
+    // Se da la bienvenida y presentacion
+    cout << "\n***********" ;
+    cout << "\n*** BIENVENIDO AL GYM ***" ;
+    cout << "\n***********" ;
+    
+    // Se solicita numero de usuarios a registrar inicialmente
+   cout << "\n¿Cuantos usuarios va a registrar?: ";
+   cin >> cantidad_usuarios;
+   // se crea un arreglo (vector) del TDA gym_usuario de tamaño cantidad_usuarios
+   gym_usuario registro_persona[cantidad_usuarios];
+   // se crea un cclo o bucle para apturar todos los datos de los usuarios a registrar
+   for (i=0;i<cantidad_usuarios;i++){
+       cout <<"\n Ingrese nombre: ";
+       cin >> registro_persona[i].nombre;
+       cout <<"\n Ingrese edad: ";
+       cin >> registro_persona[i].edad;
+       cout <<"\n Ingrese cedula: ";
+       cin >> registro_persona[i].cedula;
+       cout <<"\n Ingrese movil: ";
+       cin >> registro_persona[i].movil;
+       cout <<"\n Ingrese Masa corporal: ";
+       cin >> registro_persona[i].masa_corporal;
+       cout <<"\n Ingrese genero: ";
+       cin >> registro_persona[i].genero;
+       cout <<"\n Ingrese cantidad de hijos: ";
+       cin >> registro_persona[i].hijo_usuario.cantidad;
+       // se decide si pedir o no los datos de los hijos(hijo_usuario.cantidad>0)
+       // no se hace vector hijos por ahora
+       
+	   cout <<"\n Ingrese cedula del hijo: ";
+       cin >> registro_persona[i].hijo_usuario.cedula;
+       
+       //se iprime nombre de los usuarios registrados satisfactoriamente
+       cout<< "\n***************\n";
+       cout<< "\nUSUARIOS REGISTRADOS SATISFACTORIAMENTE" << endl;
+       for(i=0;i<cantidad_usuarios;i++){
+	   // se imprime cada nombre registrado
+	   cout << i+1<<"\n:" <<registro_persona[i].nombre<<endl;
+	   // se da por finalizado el programa
+	   cout<< "\n FIN DE EJECUCION" <<endl;
+	   }
+   }
+   
+    return 0;
+}
