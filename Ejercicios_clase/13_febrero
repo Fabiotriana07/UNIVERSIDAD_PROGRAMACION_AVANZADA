@@ -1,0 +1,36 @@
+/****
+Fecha:13-feb-2023
+Autor:Fabio Triana
+Problema:
+ Se requiere hacer una aplicacion que capture los datos de usuarios segun tipo de cliente, el resultado sera el valor a pagar
+ segun la cantidad de canales premium a pagar y conexiones de servicios basicos.
+    1. Inicialmente el usuario debera digitar el numero de cuenta
+    2. Existen dos tipos de clientes r/R (residencial) y n/N (negocio
+    3. El valor si es residencial es igual a 20.7 mas 8.8 veces(Cantidad_CANALES_premium)
+    4. El valor si es negocios se vera definido por:
+            - si la cantidad de conexiones_servicios_basicos es mayor a 10
+                ·el valor es igual al restante de los 10(cantidad_canales_premium)
+                mas 78.9 mas 18.9 veces cantidad_canales_premium
+    5. Al final se pregunta al usuario si quiere ingresar por otro cliente.
+***/
+
+#include <iostream>
+#include <fstream>
+#include <ctime>
+
+using namespace std;
+int numero_cuenta,tipo_usuario,decision=1;
+int main(){
+    while (decision==1){
+    cout << "¿Digite el numero de cuenta?:"<<endl;
+        cin >> numero_cuenta;
+    cout << "\n¿Que tipo de usuario es?:\n 1- Residencial\n 2- Negocio"<< endl;
+        cin >> tipo_usuario;
+    cout << "\n¿Cuantos servicios publicos tiene?"<< endl;
+        cin >> conexiones_servicios_basicos;
+    cout << "\n¿Cuantos canales premium tiene?"<< endl;
+        cin >> cantidad_canales_premium;
+    cout << "\n¿DESEA INGRESAR POR OTRO CLIENTE?:\n 1- SI\n 2- NO"<<endl;
+    cin >> decision;
+    }
+}
