@@ -1,0 +1,59 @@
+/**********************************
+Fecha:30-01-2023
+Autor: Fabio Andrés Triana Rodríguez
+Problema: se tiene un gym que requiere un sistema informatico para capturar los datos de sus clientes 
+Caracteristicas: - se crea un struct para hacer el tipo de dato al capturar los datos
+ - se presenta que por cada dato se imprima la pregunta y se captura 
+**********************************/
+
+#include<stdio.h>
+#include <string.h>
+
+
+struct datosgym{
+	int edad;
+	int cel;
+	int hijos;
+	int id;
+	float masa;
+	char genero[10];
+	char direccion[30];
+	char correo[30];
+	char nombre[40];
+};
+
+int main()
+{
+
+	datosgym persona;
+	
+printf("Escriba el nombre\n");
+scanf("%s",&persona.nombre);
+printf("Digite la edad\n");
+scanf("%i",&persona.edad);
+printf("Digite el documento de identidad\n");
+scanf("%i",&persona.id);
+printf("Digite la masa corporal\n");
+scanf("%f",&persona.masa);
+printf("Escriba el genero\n");
+scanf("%s",&persona.genero);
+printf("Escriba el correo\n");
+scanf("%s",&persona.correo);
+printf("Digite el numero de celular\n");
+scanf("%i",&persona.cel);
+printf("digite la cantidad de hijos\n");
+scanf("%i",&persona.hijos);
+printf("Escriba la direccion\n");
+scanf("%s",&persona.direccion);
+printf("\n\n");
+
+printf("Nombre:%s \n",persona.nombre);
+printf("Edad:%i \n",persona.edad);
+printf("Documento:%i \n",persona.id);
+printf("Masa corporal:%f \n",persona.masa);
+printf("Genero:%s \n",persona.genero);
+printf("Correo:%s \n",persona.correo);
+printf("Cel:%i \n",persona.cel);
+printf("Cantidad de hijos:%i \n",persona.hijos);
+printf("Direccion:%s \n",persona.direccion);
+}
