@@ -1,0 +1,73 @@
+/**********
+Fecha:15-feb-2023
+Autor:Fabio Triana
+Problema:
+ TALLER 01 PUNTO #2:
+Se desea capturar los datos de los clientes para ser impreso en la factura.
+Se requiere crear una estructura de datos, que encapsule los datos de los usuarios.
+Se requiere que el uso de la estructura sea a través de punteros. Se requiere imprimir
+las facturas en un fichero de texto.
+Recomendaciones:
+1.- Hacer funciones por separado
+2.- Anunciar/Documentar acciones
+3.- Identificar su fichero fuente .cpp
+4.- Subir el fichero fuente a un repositorio.
+*********/
+
+// se crea una estructura para la captura de los datos basicos de los usuarios
+
+#include <iostream>
+#include <fstream>
+#include <ctime>
+using namespace std;
+struct datos_usuarios{
+    string nombre;
+    string apellido;
+    int edad;
+};
+
+int main()
+{
+    // se declaran variables a usar
+    int cantidad, i;
+    void crear_fichero(int cantidad,struct datos_usuarios personas[cantidad]);
+    
+    // se pide cuantos usuarios
+    cout << "¿Cuantos usuarios va a ingresar?:\n";
+    cin >> cantidad;
+    // se crea un ojeto struct del tamaño cantidad
+    datos_usuarios personas[cantidad];
+    // se piden los datos de los usuarios
+    void crear_fichero(cantidad,datos_usuarios(personas[cantidad]));
+     // Se imprimen los datos de los usuarios
+     for (i=0;i<cantidad;i++){
+         cout<<"\n \n USUARIO# ["<<i+1<<"]";
+        cout<<"\nNombre["<<i+1<< "]:"<<personas[i].nombre;
+        cout<<"\nApellido["<<i+1<< "]:"<<personas[i].apellido;
+        cout<<"\nEdad["<<i+1<< "]:"<<personas[i].edad;
+        }
+    
+    return 0;
+}
+
+void crear_fichero(int cantidad,struct datos_usuarios personas[cantidad]){
+    int i;
+// se crea el objeto tipo ofstream (digital)junto con el nombre del fichero(fisico)
+ofstream fichero_escritura ("usuarios_programa.txt");
+// se debe preguntar si hay espacio en memoria para abrir el fichero_escritura
+if (fichero_escritura.is_open()){
+    for (i=0;i<cantidad;i++){
+    cout<<"\n \n USUARIO# ["<<i+1<<"]";
+    cout<<"\nIngrese nombre ";
+    cin >> personas[i].nombre;
+    cout<<"\nIngrese apellido ";
+    cin >> personas[i].apellido;
+    cout<<"\nIngrese edad ";
+    cin >> personas[i].edad;
+}
+}
+else {
+    cout<<"o tiene permisos de escritura" << endl;
+}
+fichero_escritura.close();
+}
