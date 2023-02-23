@@ -1,1 +1,136 @@
+/*********************
+Fecha:22-feb-2023
+Autor:Fabio Triana
+Problema:
+Se desea hacer un aplicación que genere un conjunto de números aleatorios entre 0 y
+20. En caso que el usuario quiera, se debe presentar un histograma sobre la frecuencia
+de los números del conjunto de números aleatorios. La aplicación deberá presentar un
+menú, que identifique en dos partes: a) presentar la generación del conjunto de
+números aleatorios y b) presentar el histograma del conjunto de números aleatorios.
+Para la solución del problema se recomienda:
+    • Se recomienda repasar funciones, vectores, arrays y estructuras.
+    • Hacer dos funciones para cada parte del menú.
+    • Crear una estructura que encapsule los datos del conjunto de números
+    aleatorios (Tamaño del conjunto, Max valor del conjunto y el conjunto).
+    • El conjunto de números aleatorios sea un array.
+    • El tipo de datos de la función para generar el conjunto debería ser la
+    estructura.
+    • En la función del histograma deberá presentar como la guía de la Figura 1
+    o mucho mejor.
+    • Se evaluará significativamente la documentación del código.
+**********************/
 
+#include <iostream>
+#include <fstream>
+#include <conio.h>
+#include <cstdlib>
+
+using namespace std;
+
+//Declaración de variables
+    int op, i, j, a, b, cant, y, d, o, cont, x;
+
+//Estructura para capturar los resultados Max y N
+struct resultados{
+int max_valor;
+int size_array;
+int *int_array;
+int numeros[];
+}resultados1;
+
+//Prototipo funciones
+void generarVectorAleatorio();
+void generarHistograma();
+void menu();
+
+
+int main(){
+	cout<<"=============== TALLER 02 ==============="<<endl;
+	cout<<endl<<"EJERCICIO 01"<<endl<<endl;
+	cout<<"Ingrese la cantidad de dias: ";//Se pide la cantidad de dias
+	cin>>cant;
+	
+	int numeros[cant];
+	menu();
+}
+
+void generarVectorAleatorio(){
+	
+	int numeros[cant]; //se crea un array con la cantidad de elementos
+	
+	
+	for(i=0;i<cant;i++){ //Se generan numeros aleatorios entre 
+	    a=rand() % 21;
+	    resultados1.numeros[i]=a;
+	}
+	
+	
+	cout<<endl<<"Vector aleatorio: ";//Se imprime el vector aleatorio
+	for(i=0;i<cant;i++){
+		cout<<resultados1.numeros[i]<<" ";
+	}
+
+	resultados1.max_valor = resultados1.numeros[0];//Se busca el valor maximo
+	for(i=0;i<cant;i++){
+		if(resultados1.numeros[i]>resultados1.max_valor){
+			resultados1.max_valor=resultados1.numeros[i];
+		};
+	}
+	
+	cout << "\nMax:" <<resultados1.max_valor<< endl;
+    cout << "Size: " <<cant<< endl;
+}
+	
+void menu(){
+	
+	do{
+	
+	cout<<endl<<"Menu: "<<endl;
+	cout<<"        0-> GENERAR CONJUNTO DE NUMEROS ALEATORIOS"<<endl;
+	cout<<"        1-> MOSTRAR HISTOGRAMA DEL CONJUNTO"<<endl;
+    cout<<"        2-> TERMINAR PROGRAMA"<<endl<<endl;
+    cout<<"        Por favor ingrese el numero de la opcion que quiere realizar: ";
+    cin>>op;
+    
+    switch(op){
+    	
+    	case 0: 
+    	    generarVectorAleatorio();
+    	    cout<<endl<<endl;
+    	    o = -1;
+    	break;
+    	
+    	case 1:
+    		generarHistograma();
+    		cout<<endl<<endl;
+    		o = -1;
+    	break;
+    	
+    	case 2: //SALIR DEL PROGRAMA
+		    o=1;
+    	break;
+    	
+    	default: //POR SI SE DIGITA UN DATO ERRONEO
+            cout <<"Ingrese opción valida"<<endl;
+    	break;
+	}
+   }
+   while(o<0); 
+}
+
+void generarHistograma(){
+
+	cout<<endl<<"      #    Valor     Histograma"<<endl;
+	
+	   for(x=0;x<cant;x++){	
+	       cout<<"  "<<"\t"<<x<<" "<<"\t"<<resultados1.numeros[x]<<"\t";
+	    	for(i=0;i<cant;i++){
+	    		if(resultados1.numeros[x]==resultados1.numeros[i]){
+	    			cout<<"*";
+				}
+				
+			}
+			cout<<endl;
+	    }
+	    cout<<endl;
+}
