@@ -1,0 +1,129 @@
+************
+***********
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+class Fecha {
+   private:
+      int dia;
+      int mes;
+      int anio;
+
+   public:
+      void presentacion(){
+         cout<<"****"<<endl;
+         cout<<"*MULTIUSOS**"<<endl;
+         cout<<"****"<<endl;
+      }
+      void getFecha() {
+         cout << "Ingrese el dia: ";
+         cin >> dia;
+         cout << "Ingrese el mes: ";
+         cin >> mes;
+         cout << "Ingrese el anio: ";
+         cin >> anio;
+      }
+
+      void mostrarFecha() {
+         cout << "La fecha ingresada es: " << dia << "/" << mes << "/" << anio << endl<< endl;
+      }
+};
+
+class Pitagoras {
+   private:
+      double lado1;
+      double lado2;
+      double hipotenusa;
+
+   public:
+      void setLados() {
+         cout << "Ingrese el valor del lado 1: ";
+         cin >> lado1;
+         cout << "Ingrese el valor del lado 2: ";
+         cin >> lado2;
+      }
+
+      void calcularHipotenusa() {
+         hipotenusa = sqrt(pow(lado1, 2) + pow(lado2, 2));
+      }
+
+      void mostrarResultado() {
+         cout << "La hipotenusa es: " << hipotenusa << endl<< endl;
+      }
+};
+
+class Conversor {
+   private:
+      double celsius;
+      double fahrenheit;
+
+   public:
+      void setCelsius() {
+         cout << "Ingrese la temperatura en grados Celsius: ";
+         cin >> celsius;
+      }
+
+      void convertirAFahrenheit() {
+         fahrenheit = (celsius * 1.8) + 32;
+      }
+
+      void mostrarResultado() {
+         cout << "La temperatura en grados Fahrenheit es: " << fahrenheit << endl<<endl;
+      }
+};
+
+class Menu {
+   private:
+      int opcion;
+
+   public:
+      void mostrarMenu(){
+         Fecha f;
+         Pitagoras p;
+         Conversor c;
+
+         do {
+            cout << "Seleccione una opcion: " << endl;
+            cout << "1. Fecha" << endl;
+            cout << "2. Calcular hipotenusa" << endl;
+            cout << "3. Convertir grados Celsius a Fahrenheit" << endl;
+            cout << "4. Salir" << endl;
+            cin >> opcion;
+
+            switch(opcion) {
+               case 1:
+                  f.getFecha();
+                  f.mostrarFecha();
+                  break;
+
+               case 2:
+                  p.setLados();
+                  p.calcularHipotenusa();
+                  p.mostrarResultado();
+                  break;
+
+               case 3:
+                  c.setCelsius();
+                  c.convertirAFahrenheit();
+                  c.mostrarResultado();
+                  break;
+
+               case 4:
+                  cout << "Adios!" << endl;
+                  break;
+
+               default:
+                  cout << "Opcion invalida" << endl;
+            }
+         } while(opcion != 4);
+      }
+};
+
+int main() {
+   Menu m;
+   m.mostrarMenu();
+
+   return 0;
+}
