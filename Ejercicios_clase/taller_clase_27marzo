@@ -1,5 +1,13 @@
-************
-***********
+/**********
+Fecha:27-marzo-2023
+Autor:Fabio Triana
+Problema:
+Utilizar clases para hacer un codigo que tenga 3 funciones (Programacion orientada a objetos)
+- Generar una fecha ingresando dia, mes y año
+- calcular la hipotenusa de un triangulo rectangulo
+- Convertir grados celsius en fahrenheit
+
+*********/
 #include <iostream>
 #include <cmath>
 
