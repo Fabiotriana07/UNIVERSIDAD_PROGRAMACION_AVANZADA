@@ -1,0 +1,61 @@
+// Clase base "Vehiculo"
+class Vehiculo {
+    private String marca;
+    private String modelo;
+    
+    public Vehiculo(String marca, String modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+    
+    public String getMarca() {
+        return marca;
+    }
+    
+    public String getModelo() {
+        return modelo;
+    }
+    
+    public void acelerar() {
+        System.out.println("El vehículo está acelerando.");
+    }
+    
+    public void frenar() {
+        System.out.println("El vehículo está frenando.");
+    }
+}
+
+// Clase derivada "Automovil"
+class Automovil extends Vehiculo {
+    private int numeroPuertas;
+    
+    public Automovil(String marca, String modelo, int numeroPuertas) {
+        super(marca, modelo);
+        this.numeroPuertas = numeroPuertas;
+    }
+    
+    public int getNumeroPuertas() {
+        return numeroPuertas;
+    }
+    
+    public void mostrarInformacion() {
+        System.out.println("Marca: " + getMarca());
+        System.out.println("Modelo: " + getModelo());
+        System.out.println("Número de puertas: " + numeroPuertas);
+    }
+}
+
+// Clase principal
+public class Main {
+    public static void main(String[] args) {
+        // Crear una instancia de Automovil
+        Automovil automovil = new Automovil("Toyota", "Corolla", 4);
+        
+        // Acceder a los métodos de la clase base
+        automovil.acelerar();
+        automovil.frenar();
+        
+        // Acceder a los métodos y atributos específicos de la clase derivada
+        automovil.mostrarInformacion();
+    }
+}
