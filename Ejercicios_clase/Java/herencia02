@@ -1,0 +1,105 @@
+// Clase base abstracta "Vehiculo"
+abstract class Vehiculo {
+    private String marca;
+    private String modelo;
+    
+    public Vehiculo(String marca, String modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+    
+    public String getMarca() {
+        return marca;
+    }
+    
+    public String getModelo() {
+        return modelo;
+    }
+    
+    // Método abstracto que debe ser implementado por las clases derivadas
+    public abstract void acelerar();
+    
+    public void frenar() {
+        System.out.println("El vehículo está frenando.");
+    }
+}
+
+// Clase derivada "Automovil"
+class Automovil extends Vehiculo {
+    private int numeroPuertas;
+    
+    public Automovil(String marca, String modelo, int numeroPuertas) {
+        super(marca, modelo);
+        this.numeroPuertas = numeroPuertas;
+    }
+    
+    public int getNumeroPuertas() {
+        return numeroPuertas;
+    }
+    
+    @Override
+    public void acelerar() {
+        System.out.println("El automóvil está acelerando.");
+    }
+    
+    public void mostrarInformacion() {
+        System.out.println("Marca: " + getMarca());
+        System.out.println("Modelo: " + getModelo());
+        System.out.println("Número de puertas: " + numeroPuertas);
+    }
+}
+
+// Clase derivada "Motocicleta"
+class Motocicleta extends Vehiculo {
+    private int cilindrada;
+    
+    public Motocicleta(String marca, String modelo, int cilindrada) {
+        super(marca, modelo);
+        this.cilindrada = cilindrada;
+    }
+    
+    public int getCilindrada() {
+        return cilindrada;
+    }
+    
+    @Override
+    public void acelerar() {
+        System.out.println("La motocicleta está acelerando.");
+    }
+    
+    public void mostrarInformacion() {
+        System.out.println("Marca: " + getMarca());
+        System.out.println("Modelo: " + getModelo());
+        System.out.println("Cilindrada: " + cilindrada + "cc");
+    }
+}
+
+// Clase principal
+public class Main {
+    public static void main(String[] args) {
+        // Crear una instancia de Automovil
+        Automovil automovil = new Automovil("Toyota", "Corolla", 4);
+        
+        // Crear una instancia de Motocicleta
+        Motocicleta motocicleta = new Motocicleta("Honda", "CBR600RR", 600);
+        
+        // Acceder a los métodos de las clases derivadas
+        automovil.acelerar();
+        automovil.frenar();
+        automovil.mostrarInformacion();
+        
+        motocicleta.acelerar();
+        motocicleta.frenar();
+        motocicleta.mostrarInformacion();
+        
+        // Utilizar polimorfismo con la clase base
+        Vehiculo vehiculo1 = new Automovil("Ford", "Mustang", 2);
+        Vehiculo vehiculo2 = new Motocicleta("Yamaha", "YZF-R6", 600);
+        
+        vehiculo1.acelerar();
+        vehiculo1.frenar();
+        
+        vehiculo2.acelerar();
+        vehiculo2.frenar();
+    }
+}
