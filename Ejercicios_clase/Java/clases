@@ -1,0 +1,30 @@
+// Definición de la clase "Persona"
+class Persona {
+    // Atributos
+    String nombre;
+    int edad;
+    
+    // Constructor
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+    
+    // Método
+    public void saludar() {
+        System.out.println("¡Hola! Mi nombre es " + nombre + " y tengo " + edad + " años.");
+    }
+}
+
+// Clase principal
+public class Main {
+    public static void main(String[] args) {
+        // Crear una instancia de Persona
+        Persona persona1 = new Persona("Juan", 25);
+        
+        // Acceder a los atributos y métodos de la instancia
+        System.out.println("Nombre: " + persona1.nombre);
+        System.out.println("Edad: " + persona1.edad);
+        persona1.saludar();
+    }
+}
