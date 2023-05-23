@@ -1,0 +1,462 @@
+//Fabio Andres Triana Rodriguez proyecto final programacion avanzada
+
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
+
+// Clase Artista
+class Artista {
+    private String nombre;
+    private Date fechaNac;
+    private String nacionalidad;
+    private String biografia;
+
+    // Constructor
+    public Artista(String nombre, Date fechaNac, String nacionalidad, String biografia) {
+        this.nombre = nombre;
+        this.fechaNac = fechaNac;
+        this.nacionalidad = nacionalidad;
+        this.biografia = biografia;
+    }
+
+    // Getters y setters
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Date getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(Date fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+    public String getBiografia() {
+        return biografia;
+    }
+
+    public void setBiografia(String biografia) {
+        this.biografia = biografia;
+    }
+}
+
+// Clase Cliente
+class Cliente {
+    private String nombre;
+    private String direccion;
+    private String email;
+
+    // Constructor
+    public Cliente(String nombre, String direccion, String email) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.email = email;
+    }
+
+    // Getters y setters
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+// Clase Compra
+class Compra {
+    private Date fecha;
+    private double precio;
+    private Cliente cliente;
+    private Obra obra;
+
+    // Constructor
+    public Compra(Date fecha, double precio, Cliente cliente, Obra obra) {
+        this.fecha = fecha;
+        this.precio = precio;
+        this.cliente = cliente;
+        this.obra = obra;
+    }
+
+    // Getters y setters
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Obra getObra() {
+        return obra;
+    }
+
+    public void setObra(Obra obra) {
+        this.obra = obra;
+    }
+}
+
+// Clase Obra
+class Obra {
+    private String titulo;
+    private String tecnica;
+    private int año;
+    private double precio;
+    private Artista artista;
+
+    // Constructor
+    public Obra(String titulo, String tecnica, int año, double precio, Artista artista) {
+        this.titulo = titulo;
+        this.tecnica = tecnica;
+        this.año = año;
+        this.precio = precio;
+        this.artista = artista;
+    }
+
+    // Getters y setters
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getTecnica() {
+        return tecnica;
+    }
+
+    public void setTecnica(String tecnica) {
+        this.tecnica = tecnica;
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public Artista getArtista() {
+        return artista;
+    }
+
+    public void setArtista(Artista artista) {
+        this.artista = artista;
+    }
+}
+
+// Clase ControlGaleria
+class ControlGaleria {
+    private List<Artista> artistas;
+    private List<Cliente> clientes;
+    private List<Obra> obras;
+    private List<Compra> compras;
+
+    // Constructor
+    public ControlGaleria() {
+        artistas = new ArrayList<>();
+        clientes = new ArrayList<>();
+        obras = new ArrayList<>();
+        compras = new ArrayList<>();
+    }
+
+    // Métodos para agregar y eliminar artistas, clientes, obras y compras
+    public void agregarArtista(Artista artista) {
+        artistas.add(artista);
+    }
+
+    public void eliminarArtista(Artista artista) {
+        artistas.remove(artista);
+    }
+
+    public void agregarCliente(Cliente cliente) {
+        clientes.add(cliente);
+    }
+
+    public void eliminarCliente(Cliente cliente) {
+        clientes.remove(cliente);
+    }
+
+    public void agregarObra(Obra obra) {
+        obras.add(obra);
+    }
+
+    public void eliminarObra(Obra obra) {
+        obras.remove(obra);
+    }
+
+    public void realizarCompra(Compra compra) {
+        compras.add(compra);
+    }
+    
+     // Agregar el método getCompras()
+    public List<Compra> getCompras() {
+        return compras;
+    }
+
+    // Métodos para listar las obras y los artistas disponibles
+    public void listarObras() {
+        for (Obra obra : obras) {
+            System.out.println("Título: " + obra.getTitulo());
+            System.out.println("Artista: " + obra.getArtista().getNombre());
+            System.out.println("Precio: " + obra.getPrecio());
+            System.out.println("-----------------------");
+        }
+    }
+
+    public void listarArtistas() {
+        for (Artista artista : artistas) {
+            System.out.println("Nombre: " + artista.getNombre());
+            System.out.println("Nacionalidad: " + artista.getNacionalidad());
+            System.out.println("-----------------------");
+        }
+    }
+
+    // Método para listar las compras realizadas
+    public void listarCompras() {
+        for (Compra compra : compras) {
+            System.out.println("Fecha: " + compra.getFecha());
+            System.out.println("Cliente: " + compra.getCliente().getNombre());
+            System.out.println("Obra: " + compra.getObra().getTitulo());
+            System.out.println("Precio: " + compra.getPrecio());
+            System.out.println("-----------------------");
+        }
+    }
+}
+
+// Clase ControlCliente
+class ControlCliente {
+    private ControlGaleria controlGaleria;
+
+    // Constructor
+    public ControlCliente(ControlGaleria controlGaleria) {
+        this.controlGaleria = controlGaleria;
+    }
+
+    // Método para agregar un cliente a la galería
+    public void agregarCliente(Cliente cliente) {
+        controlGaleria.agregarCliente(cliente);
+    }
+
+    // Método para eliminar un cliente de la galería
+    public void eliminarCliente(Cliente cliente) {
+        controlGaleria.eliminarCliente(cliente);
+    }
+
+    // Método para listar las compras de un cliente
+    public void listarCompras(Cliente cliente) {
+        for (Compra compra : controlGaleria.getCompras()) {
+            if (compra.getCliente().equals(cliente)) {
+                System.out.println("Fecha: " + compra.getFecha());
+                System.out.println("Obra: " + compra.getObra().getTitulo());
+                System.out.println("Precio: " + compra.getPrecio());
+                System.out.println("-----------------------");
+            }
+        }
+    }
+}
+
+// Clase GestionObras
+class GestionObras {
+    private ControlGaleria controlGaleria;
+
+    // Constructor
+    public GestionObras(ControlGaleria controlGaleria) {
+        this.controlGaleria = controlGaleria;
+    }
+
+    // Método para agregar una obra a la galería
+    public void agregarObra(Obra obra) {
+        controlGaleria.agregarObra(obra);
+    }
+
+    // Método para eliminar una obra de la galería
+    public void eliminarObra(Obra obra) {
+        controlGaleria.eliminarObra(obra);
+    }
+
+    // Método para agregar un artista a la galería
+    public void agregarArtista(Artista artista) {
+        controlGaleria.agregarArtista(artista);
+    }
+
+    // Método para eliminar un artista de la galería
+    public void eliminarArtista(Artista artista) {
+        controlGaleria.eliminarArtista(artista);
+    }
+
+    // Método para listar las obras disponibles
+    public void listarObras() {
+        controlGaleria.listarObras();
+    }
+}
+
+// Clase PantallaGaleria
+interface PantallaGaleria {
+    void mostrarObras();
+    void mostrarArtistas();
+    void mostrarCompras();
+}
+
+// Implementación de la interfaz PantallaGaleria
+class PantallaGaleriaImpl implements PantallaGaleria {
+    private ControlGaleria controlGaleria;
+
+    // Constructor
+    public PantallaGaleriaImpl(ControlGaleria controlGaleria) {
+        this.controlGaleria = controlGaleria;
+    }
+
+    @Override
+    public void mostrarObras() {
+        controlGaleria.listarObras();
+    }
+
+    @Override
+    public void mostrarArtistas() {
+        controlGaleria.listarArtistas();
+    }
+
+    @Override
+    public void mostrarCompras() {
+        controlGaleria.listarCompras();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Crear instancias de las clases
+        Artista artista1 = new Artista("Pablo Picasso", new Date(), "Español", "Biografía de Pablo Picasso");
+        Artista artista2 = new Artista("Vincent van Gogh", new Date(), "Holandés", "Biografía de Vincent van Gogh");
+
+        Cliente cliente1 = new Cliente("Juan", "Dirección 1", "cliente1@example.com");
+        Cliente cliente2 = new Cliente("María", "Dirección 2", "cliente2@example.com");
+
+        Obra obra1 = new Obra("La noche estrellada", "Óleo", 1889, 1000.0, artista2);
+        Obra obra2 = new Obra("Guernica", "Óleo", 1937, 2000.0, artista1);
+
+        Compra compra1 = new Compra(new Date(), 1500.0, cliente1, obra1);
+        Compra compra2 = new Compra(new Date(), 1800.0, cliente2, obra2);
+
+        ControlGaleria controlGaleria = new ControlGaleria();
+        controlGaleria.agregarArtista(artista1);
+        controlGaleria.agregarArtista(artista2);
+        controlGaleria.agregarCliente(cliente1);
+        controlGaleria.agregarCliente(cliente2);
+        controlGaleria.agregarObra(obra1);
+        controlGaleria.agregarObra(obra2);
+        controlGaleria.realizarCompra(compra1);
+        controlGaleria.realizarCompra(compra2);
+
+        ControlCliente controlCliente = new ControlCliente(controlGaleria);
+
+        PantallaGaleria pantallaGaleria = new PantallaGaleriaImpl(controlGaleria);
+        
+        
+        System.out.println("BBBBB    OOO    GGGG  OOOO  TTTTT  AAAAA");
+        System.out.println("B    B  O   O  G      O  O    T    A   A");
+        System.out.println("BBBBB   O   O  G  GG  O  O    T    AAAAAA");
+        System.out.println("B    B  O   O  G   G  O  O    T    A   A");
+        System.out.println("BBBBB    OOO    GGGG  OOOO    T   A     A");
+        
+        // Se crea un objeto Scanner para leer la entrada del usuario desde la consola.
+        Scanner scanner = new Scanner(System.in);  
+        
+        // Se declara una variable "opcion" de tipo entero e inicializada con el valor 0.
+        int opcion = 0;  
+        
+        while (opcion != 4) {  // Se inicia un bucle while que se repetirá mientras "opcion" sea diferente de 4.
+            System.out.println("\nBienvenido a la Galería de Arte");  // Se imprime un mensaje de bienvenida.
+            System.out.println("1. Mostrar obras");  // Se muestra la opción 1 del menú.
+            System.out.println("2. Mostrar artistas");  // Se muestra la opción 2 del menú.
+            System.out.println("3. Mostrar compras");  // Se muestra la opción 3 del menú.
+            System.out.println("4. Salir");  // Se muestra la opción 4 del menú.
+            System.out.print("Seleccione una opción: ");  // Se solicita al usuario que seleccione una opción.
+            
+    // Se lee el valor ingresado por el usuario y se almacena en la variable "opcion".
+    opcion = scanner.nextInt();  
+    // Se imprime una línea en blanco.
+    System.out.println("");  
+    // Se limpia el búfer de entrada.
+    scanner.nextLine(); 
+
+    switch (opcion) {  // Se inicia una estructura de control switch basada en el valor de "opcion".
+        case 1:
+            pantallaGaleria.mostrarObras();  // Se llama al método "mostrarObras()" de la clase "pantallaGaleria".
+            break;  // Se sale del switch.
+        case 2:
+            pantallaGaleria.mostrarArtistas();  // Se llama al método "mostrarArtistas()" de la clase "pantallaGaleria".
+            break;  // Se sale del switch.
+        case 3:
+            pantallaGaleria.mostrarCompras();  // Se llama al método "mostrarCompras()" de la clase "pantallaGaleria".
+            break;  // Se sale del switch.
+        case 4:
+            System.out.println("Gracias por visitar la Galería de Arte. ¡Hasta luego!");  // Se imprime un mensaje de despedida.
+            break;  // Se sale del switch.
+        default:
+            System.out.println("Opción inválida. Por favor, seleccione una opción válida.");  // Se imprime un mensaje de opción inválida.
+            break;  // Se sale del switch.
+    }
+
+    System.out.println();  // Se imprime una línea en blanco.
+}
+
+scanner.close();  // Se cierra el objeto Scanner.
+}
