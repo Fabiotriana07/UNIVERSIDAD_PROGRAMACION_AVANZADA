@@ -1,3 +1,41 @@
+/****
+Fecha:22-mayo-2023
+Autor:Fabio Triana
+Problema:
+1 Descripción del problema
+El taller consiste en simular una tienda de productos electrónicos que ofrece la opción de
+garantía extendida para ciertos productos. Para ello, se requiere implementar el concepto de
+clases abstractas y polimorfismo.
+2 Descripción del Taller
+La tienda cuenta con una clase abstracta base llamada 'ProductoElectronico', que contiene
+atributos como 'nombre', 'precio' y 'garantia' y métodos como ‘getNombre’, ‘getPrecio’,
+‘getGarantia’ y ‘cargar’, método que imprimirá en pantalla cuánto tiempo demora en cargar el
+equipo dada por parámetros una carga inicial (a disposición del estudiante los tiempos de
+carga a usar). Además, se deben crear al menos dos clases derivadas, como 'Celular' y
+'Computadora', que hereden de 'ProductoElectronico' y añadan atributos y métodos
+específicos de cada tipo de producto, ya que contarán con precios, nombres y garantías
+diferentes.
+Teniendo esto en cuenta, se deberán crear 3 métodos aparte en las clases hija que deberán
+tener un comportamiento diferente a la de su padre. El programa principal deberá crear un
+ArrayList de tipo ProductoElectronico y esta deberá ser llenada con 2 objetos de cada una de
+las clases hijas. Posteriormente, se deberá recorrer esta lista y objeto por objeto se deberán
+mostrar en pantalla como cambia el comportamiento de cada instancia teniendo en cuenta si
+es un computador, celular, etc. Ejecutando todos los métodos implementados.
+Cabe resaltar que para un correcto uso de una clase abstracta sus clases hijas deberán
+implementar todos los métodos definidos en la clase principal.
+3 Evaluación
+El programa deberá contar con un menú en el cual permita crear los objetos, inicializándolos
+con la información pedida en pantalla, siendo agregados automáticamente a la lista y
+posteriormente presentando la opción de recorrer el ArrayList.
+El código debe estar debidamente comentado para entender el funcionamiento de este y
+evidenciar el entendimiento del estudiante de los temas a evaluar.
+Finalmente, será evaluado el uso correcto de los conceptos de abstracción y polimorfismo,
+además de las prácticas básicas de buena programación, como un código ordenado, nombres
+de métodos, variables y clases acordes al problema y correcta identación.
+El código debe ser entregado en una carpeta comprimida que contenga el proyecto con las
+clases y funcionalidades solicitadas. 
+***/
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
