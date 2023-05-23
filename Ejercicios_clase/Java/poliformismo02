@@ -1,0 +1,123 @@
+// Interfaz "Volador"
+interface Volador {
+    void volar();
+}
+
+// Clase base abstracta "Animal"
+abstract class Animal {
+    private String nombre;
+    
+    public Animal(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public abstract void hacerSonido();
+}
+
+// Clase derivada "Perro"
+class Perro extends Animal {
+    public Perro(String nombre) {
+        super(nombre);
+    }
+    
+    @Override
+    public void hacerSonido() {
+        System.out.println("El perro " + getNombre() + " hace: ¡Guau!");
+    }
+}
+
+// Clase derivada "Gato"
+class Gato extends Animal {
+    public Gato(String nombre) {
+        super(nombre);
+    }
+    
+    @Override
+    public void hacerSonido() {
+        System.out.println("El gato " + getNombre() + " hace: ¡Miau!");
+    }
+}
+
+// Clase derivada "Vaca"
+class Vaca extends Animal {
+    public Vaca(String nombre) {
+        super(nombre);
+    }
+    
+    @Override
+    public void hacerSonido() {
+        System.out.println("La vaca " + getNombre() + " hace: ¡Muu!");
+    }
+}
+
+// Clase "Ave"
+class Ave implements Volador {
+    private String especie;
+    
+    public Ave(String especie) {
+        this.especie = especie;
+    }
+    
+    @Override
+    public void volar() {
+        System.out.println("El ave de la especie " + especie + " está volando.");
+    }
+}
+
+// Clase "Avion"
+class Avion implements Volador {
+    private String modelo;
+    
+    public Avion(String modelo) {
+        this.modelo = modelo;
+    }
+    
+    @Override
+    public void volar() {
+        System.out.println("El avión de modelo " + modelo + " está volando.");
+    }
+}
+
+// Clase principal
+public class Main {
+    public static void main(String[] args) {
+        // Crear instancias de animales
+        Animal perro = new Perro("Firulais");
+        Animal gato = new Gato("Garfield");
+        Animal vaca = new Vaca("Margarita");
+        
+        // Llamar a los métodos de los animales
+        perro.hacerSonido();
+        gato.hacerSonido();
+        vaca.hacerSonido();
+        
+        // Crear instancias de voladores
+        Volador ave = new Ave("Aguilucho");
+        Volador avion = new Avion("Boeing 747");
+        
+        // Llamar al método volar de los voladores
+        ave.volar();
+        avion.volar();
+        
+        // Composición: Animal que puede volar
+        Animal animalVolador = new Animal("AnimalVolador") {
+            Volador volador = new Ave("Gorrión");
+            
+            @Override
+            public void hacerSonido() {
+                System.out.println("El animal volador hace: ¡Chirp!");
+            }
+            
+            public void volar() {
+                volador.volar();
+            }
+        };
+        
+        animalVolador.hacerSonido();
+        ((Animal) animalVolador).volar();
+    }
+}
