@@ -1,1 +1,152 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+// Clase abstracta base 'ProductoElectronico'
+abstract class ProductoElectronico {
+    private String nombre;
+    private double precio;
+    private int garantia;
+
+    // Constructor de la clase base
+    public ProductoElectronico(String nombre, double precio, int garantia) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.garantia = garantia;
+    }
+
+    // Métodos de acceso
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public int getGarantia() {
+        return garantia;
+    }
+
+    // Método abstracto 'cargar()' que debe ser implementado por las clases hijas
+    public abstract void cargar();
+
+    // Método para mostrar la información del producto
+    public void mostrarInformacion() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Precio: $" + precio);
+        System.out.println("Garantía: " + garantia + " meses");
+    }
+}
+
+// Clase 'Celular' que hereda de 'ProductoElectronico'
+class Celular extends ProductoElectronico {
+    private String modelo;
+
+    // Constructor de la clase 'Celular'
+    public Celular(String nombre, double precio, int garantia, String modelo) {
+        super(nombre, precio, garantia);
+        this.modelo = modelo;
+    }
+
+    // Implementación del método 'cargar()' específico para los celulares
+    public void cargar() {
+        System.out.println("Cargando el celular " + getModelo() + "...");
+        // Lógica de carga específica para celulares
+    }
+
+    // Método para obtener el modelo del celular
+    public String getModelo() {
+        return modelo;
+    }
+}
+
+// Clase 'Computadora' que hereda de 'ProductoElectronico'
+class Computadora extends ProductoElectronico {
+    private String marca;
+
+    // Constructor de la clase 'Computadora'
+    public Computadora(String nombre, double precio, int garantia, String marca) {
+        super(nombre, precio, garantia);
+        this.marca = marca;
+    }
+
+    // Implementación del método 'cargar()' específico para las computadoras
+    public void cargar() {
+        System.out.println("Cargando la computadora de marca " + getMarca() + "...");
+        // Lógica de carga específica para computadoras
+    }
+
+    // Método para obtener la marca de la computadora
+    public String getMarca() {
+        return marca;
+    }
+}
+
+// Clase principal 'TiendaElectronica'
+public class TiendaElectronica {
+    public static void main(String[] args) {
+        ArrayList<ProductoElectronico> productos = new ArrayList<>(); // ArrayList para almacenar los productos
+        Scanner scanner = new Scanner(System.in);
+
+        int opcion = 0;
+        while (opcion != 3) {
+            System.out.println("Menu:");
+            System.out.println("1. Crear producto");
+            System.out.println("2. Mostrar productos");
+            System.out.println("3. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Crear producto:");
+                    System.out.print("Nombre: ");
+                    String nombre = scanner.next();
+                    System.out.print("Precio: ");
+                    double precio = scanner.nextDouble();
+                    System.out.print("Garantía (meses): ");
+                    int garantia = scanner.nextInt();
+                    System.out.print("Tipo (1 - Celular, 2 - Computadora): ");
+                    int tipo = scanner.nextInt();
+
+                    ProductoElectronico producto;
+                    if (tipo == 1) {
+                        System.out.print("Modelo del celular: ");
+                        String modelo = scanner.next();
+                        producto = new Celular(nombre, precio, garantia, modelo);
+                    } else if (tipo == 2) {
+                        System.out.print("Marca de la computadora: ");
+                        String marca = scanner.next();
+                        producto = new Computadora(nombre, precio, garantia, marca);
+                    } else {
+                        System.out.println("Opción inválida.");
+                        continue;
+                    }
+
+                    productos.add(producto); // Agregar el producto creado a la lista
+                    System.out.println("Producto creado y agregado a la lista.");
+                    break;
+
+                case 2:
+                    System.out.println("Mostrar productos:");
+                    for (ProductoElectronico p : productos) {
+                        p.mostrarInformacion();
+                        p.cargar();
+                        System.out.println("--------------------");
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("¡Chao!");
+                    break;
+
+                default:
+                    System.out.println("Opción inválida.");
+                    break;
+            }
+        }
+
+        scanner.close();
+    }
+}
 
